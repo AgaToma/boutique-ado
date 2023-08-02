@@ -28,15 +28,15 @@ def add_to_bag(request, item_id):
             if size in bag[item_id]['items_by_size'].keys():
                 bag[item_id]['items_by_size'][size] += quantity
             else:
-                bag[item_id] = ['items_by_size'][size] += quantity
+                bag[item_id] = ['items_by_size'][size] = quantity
         else:
             bag[item_id] = {'items_by_size': {size: quantity}}
     else:
-    # add products and quantity to the created dictionary
-    if item_id in list(bag.keys()):
-        bag[item_id] += quantity
-    else:
-        bag[item_id] = quantity
+        # add products and quantity to the created dictionary
+        if item_id in list(bag.keys()):
+            bag[item_id] += quantity
+        else:
+            bag[item_id] = quantity
     # overriting the variable bag in the session with its updated version
     request.session['bag'] = bag
     return redirect(redirect_url)
