@@ -27,7 +27,7 @@ class OrderForm(forms.ModelForm):
             'street_address2': 'Street Address 2',
             'county': 'County',
         }
-        # coursor will start here when user loads the page
+
         self.fields['full_name'].widget.attrs['autofocus'] = True
         for field in self.fields:
             if self.fields[field].required:
